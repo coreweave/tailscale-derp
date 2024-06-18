@@ -1,0 +1,44 @@
+{{- if .Values.service.enabled }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "tailscale-derp.fullname" . }}
+  labels:
+    {{- include "tailscale-derp.labels" . | nindent 4 }}
+  annotations: {{- tpl (((.Values).service).annotations | toYaml ) . | nindent 4}}
+spec:
+  internalTrafficPolicy: {{ .Values.service.internalTrafficPolicy }}
+  externalTrafficPolicy: {{ .Values.service.externalTrafficPolicy }}
+  type: {{ .Values.service.type }}
+  ports:
+    {{- range .Values.service.ports }}
+    - name: {{ .name }}
+      port: {{ .port }}
+      targetPort: {{ .targetPort }}
+      protocol: {{ .protocol | default "TCP" }}
+    {{- end }}
+  selector:
+    {{- include "tailscale-derp.selectorLabels" . | nindent 4 }}
+{{- end }}
+{{- if .Values.service.directAttach.enabled }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations: {{- tpl ((((.Values).service).directAttach).annotations | toYaml) . | nindent 4}}
+  labels:
+    {{- include "tailscale-derp.labels" . | nindent 4 }}
+  name: {{ include "tailscale-derp.fullname" . }}-direct
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  internalTrafficPolicy: Cluster
+  ports:
+    - port: 1
+      targetPort: attach
+      protocol: UDP
+      name: attach
+  selector:
+    coreweave.cloud/ignore: ignore
+{{- end }}

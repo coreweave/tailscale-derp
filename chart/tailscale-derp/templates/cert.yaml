@@ -1,0 +1,17 @@
+{{- if (.Values.tls).enabled }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  annotations: {{ .Values.tls.annotations | toYaml | nindent 4 }}
+  labels: {{ .Values.tls.labels | toYaml | nindent 4 }}
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  commonName: '{{ tpl ((.Values.tls).domain) . }}'
+  dnsNames:
+  - '{{ tpl ((.Values.tls).domain) . }}'
+  issuerRef:
+    kind: ClusterIssuer
+    name: {{ (.Values.tls).clusterIssuer | default "letsencrypt-prod" }}
+  secretName: {{ .Release.Name }}-tls
+{{- end }}

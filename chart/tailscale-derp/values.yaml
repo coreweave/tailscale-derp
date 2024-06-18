@@ -1,0 +1,143 @@
+# Default values for tailscale-derp.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+derpServerHostname: 'derp.foo.bar'
+
+replicaCount: 1
+
+image:
+  repository: registry.gitlab.com/coreweave/tailscale-derp
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: false
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+
+deploymentAnnotations: {}
+
+env:
+  - name: GOMAXPROCS
+    valueFrom:
+      resourceFieldRef:
+        resource: limits.cpu
+  - name: GOMEMLIMIT
+    valueFrom:
+      resourceFieldRef:
+        resource: limits.memory
+  - name: DERP_HOSTNAME
+    value: '{{ include "tailscale-derp.hostname" . }}'
+  # - name: DERP_CERTMODE
+  #   value: "manual"
+  # - name: DERP_CERTDIR
+  #   value: "/app/certs"
+  # - name: DERP_ADDR
+  #   value: ":443"
+  # - name: DERP_HTTP_PORT
+  #   value: "80"
+  # - name: DERP_STUN_PORT
+  #   value: "80"
+  # - name: DERP_STUN
+  #   value: "true"
+  # - name: DERP_DERP
+  #   value: "true"
+
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  enabled: false
+  internalTrafficPolicy: Cluster
+  externalTrafficPolicy: Local
+  annotations:
+      externaldns.alpha.kubernetes.io/hostname: '{{ include "tailscale-derp.hostname" . }}'
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+    - name: https
+      port: 443
+      targetPort: 443
+    - name: stun
+      port: 3478
+      targetPort: 3478
+  directAttach:
+    enabled: false
+    annotations: {}
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 2Gi
+  limits:
+    cpu: 2000m
+    memory: 2Gi
+
+livenessProbe:
+  exec:
+    command:
+      - /bin/bash
+      - -c
+      - /app/healthprobe.sh
+  timeoutSeconds: 60
+  initialDelaySeconds: 300 # Needs to grab cert
+readinessProbe:
+  exec:
+    command:
+      - /bin/bash
+      - -c
+      - /app/healthprobe.sh
+  timeoutSeconds: 60
+  initialDelaySeconds: 300 # Needs to grab cert
+
+tls: {}
+  # enabled: true
+  # domain: '{{ include "tailscale-derp.hostname" . }}'
+
+# Additional volumes on the output Deployment definition.
+volumes: []
+# - name: cert
+#   secret:
+#     secretName: '{{ .Release.Name }}-tls'
+
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts: []
+# - name: cert
+#   mountPath: '/app/certs/{{ include "tailscale-derp.hostname" . }}.crt'
+#   subPath: tls.crt
+# - name: cert
+#   mountPath: '/app/certs/{{ include "tailscale-derp.hostname" . }}.key'
+#   subPath: tls.key
+#   readOnly: true
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
