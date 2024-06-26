@@ -41,7 +41,8 @@
   jobs:
     renovate:
       name: Renovate
-      runs-on: ubuntu-latest
+      runs-on: cw
+      container: ghcr.io/coreweave/utility-images-private/github-base-runner:v1.0.0
       steps:
         - name: Generate Token
           uses: actions/create-github-app-token@v1
