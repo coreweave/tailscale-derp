@@ -1,6 +1,7 @@
 name: "Charts: Release to GHCR OCI"
 
 on:
+  workflow_dispatch: {}
   push:
     branches: [main]
     paths:
@@ -36,6 +37,7 @@ jobs:
         uses: helm/chart-releaser-action@v1.6.0
         env:
           skip_upload: true
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push Charts to GHCR
         run: |
