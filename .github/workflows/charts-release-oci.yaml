@@ -6,7 +6,7 @@ on:
 
 jobs:
   release-charts:
-    name: Release charts
+    name: Release chart
     permissions:
       contents: write
     runs-on: ubuntu-22.04
@@ -41,5 +41,5 @@ jobs:
             if [ -z "${pkg:-}" ]; then
               break
             fi
-            helm push "${pkg}" oci://ghcr.io/${{ github.repository_owner }}/${{ github.repository }}/chart
+            helm push "${pkg}" oci://ghcr.io/${{ github.repository }}/chart
           done
