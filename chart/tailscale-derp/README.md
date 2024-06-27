@@ -1,6 +1,8 @@
 # tailscale-derp
 
-A Helm chart for Kubernetes
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.68.0](https://img.shields.io/badge/AppVersion-v1.68.0-informational?style=flat-square)
+
+Run a custom tailscale derp server on Kubernetes.
 
 ## Values
 
@@ -17,7 +19,7 @@ A Helm chart for Kubernetes
 | env[2].value | string | `"{{ include \"tailscale-derp.hostname\" . }}"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"registry.gitlab.com/coreweave/tailscale-derp"` |  |
+| image.repository | string | `"ghcr.io/coreweave/tailscale-derp"` |  |
 | image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | livenessProbe.exec.command[0] | string | `"/bin/bash"` |  |
