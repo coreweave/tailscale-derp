@@ -3,6 +3,8 @@ name: "Charts: Release to GHCR OCI"
 on:
   push:
     branches: [main]
+    paths:
+      - "chart/**/*"
 
 jobs:
   release-charts:
