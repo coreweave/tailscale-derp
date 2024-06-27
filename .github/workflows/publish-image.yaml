@@ -15,6 +15,7 @@ jobs:
     name: Publish Image
     permissions:
       contents: write
+      packages: write
     runs-on: ubuntu-latest
 
     steps:
