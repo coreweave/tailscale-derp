@@ -15,6 +15,7 @@ jobs:
     name: Publish Image
     permissions:
       contents: write
+      packages: write
     runs-on: ubuntu-latest
 
     steps:
@@ -36,7 +37,8 @@ jobs:
         uses: docker/build-push-action@2cdde995de11925a030ce8070c3d77a52ffcf1c0
         with:
           push: true
-          context: ./Docker
+          context: ./
+          file: ./Docker/Dockerfile
           build-args: |
             VERSION=${{ env.UPSTREAM_TS_VERSION }}
           tags: |

@@ -23,3 +23,5 @@ RUN apt-get update && \
     chmod +x /app/healthprobe.sh
 
 ENTRYPOINT ["/app/entrypoint.sh"]
+
+LABEL org.opencontainers.image.source="https://github.com/tailscale/tailscale"
