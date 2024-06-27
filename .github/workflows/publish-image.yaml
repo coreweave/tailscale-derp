@@ -37,6 +37,7 @@ jobs:
         with:
           push: true
           context: ./
+          file: ./Docker/Dockerfile
           build-args: |
             VERSION=${{ env.UPSTREAM_TS_VERSION }}
           tags: |
