@@ -7,7 +7,7 @@ derpServerHostname: 'derp.foo.bar'
 replicaCount: 1
 
 image:
-  repository: registry.gitlab.com/coreweave/tailscale-derp
+  repository: ghcr.io/coreweave/tailscale-derp
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
