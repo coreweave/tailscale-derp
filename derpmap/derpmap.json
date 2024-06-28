@@ -1,0 +1,70 @@
+{
+  "Regions": {
+    "900": {
+      "RegionID": 900,
+      "RegionCode": "rno2",
+      "Nodes": [
+        {
+          "Name": "1",
+          "RegionID": 900,
+          "HostName": "derp.rno2.coreweave.com"
+        }
+      ]
+    },
+    "901": {
+      "RegionID": 901,
+      "RegionCode": "rdu1",
+      "Nodes": [
+        {
+          "Name": "1",
+          "RegionID": 901,
+          "HostName": "derp.rdu1.coreweave.com"
+        }
+      ]
+    },
+    "902": {
+      "RegionID": 902,
+      "RegionCode": "us-east-02",
+      "Nodes": [
+        {
+          "Name": "1",
+          "RegionID": 901,
+          "HostName": "derp.us-east-02.coreweave.com"
+        }
+      ]
+    },
+    "903": {
+      "RegionID": 903,
+      "RegionCode": "us-east-03",
+      "Nodes": [
+        {
+          "Name": "1",
+          "RegionID": 903,
+          "HostName": "derp.us-east-03.coreweave.com"
+        }
+      ]
+    },
+    "904": {
+      "RegionID": 904,
+      "RegionCode": "us-east-04",
+      "Nodes": [
+        {
+          "Name": "1",
+          "RegionID": 904,
+          "HostName": "derp.us-east-04.coreweave.com"
+        }
+      ]
+    },
+    "905": {
+      "RegionID": 905,
+      "RegionCode": "us-west-03",
+      "Nodes": [
+        {
+          "Name": "1",
+          "RegionID": 905,
+          "HostName": "derp.us-west-03.coreweave.com"
+        }
+      ]
+    }
+  }
+}
