@@ -20,7 +20,7 @@
     schedule:
       - cron: "0 * * * *" # Every hour
     push:
-      branches: ["develop"]
+      branches: ["main"]
       paths:
         - .github/renovate.json5
         - .github/renovate/**.json5
