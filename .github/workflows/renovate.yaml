@@ -41,7 +41,7 @@
   jobs:
     renovate:
       name: Renovate
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-22.04
       steps:
         - name: Generate Token
           uses: actions/create-github-app-token@v1
