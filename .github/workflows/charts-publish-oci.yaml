@@ -1,11 +1,10 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: "Charts: Publish to GHCR OCI"
 
 on:
-  push:
-    branches:
-      - "**"
   release:
-    types: [published]
+    types: ["published", "created"]
   workflow_dispatch: {}
 
 jobs:
