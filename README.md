@@ -13,7 +13,7 @@ The container image follows tailscale's upstream version.
 ## TL;DR
 
 ```console
-helm install tailscale-derp oci://ghcr.io/coreweave/tailscale-derp/chart
+helm install tailscale-derp oci://ghcr.io/coreweave/tailscale-derp/chart/tailscale-derp
 ```
 
 ## Installing the Chart
@@ -21,7 +21,7 @@ helm install tailscale-derp oci://ghcr.io/coreweave/tailscale-derp/chart
 To install the chart with the release name `tailscale-derp`
 
 ```console
-helm install tailscale-derp oci://ghcr.io/coreweave/tailscale-derp/chart
+helm install tailscale-derp oci://ghcr.io/coreweave/tailscale-derp/chart/tailscale-derp
 ```
 
 ## Uninstalling the Chart
@@ -44,11 +44,11 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install tailscale-derp \
   --set derpServerHostname="your-hostname.com" \
-    oci://ghcr.io/coreweave/tailscale-derp/chart
+    oci://ghcr.io/coreweave/tailscale-derp/chart/tailscale-derp
 ```
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart.
 
 ```console
-helm install tailscale-derp oci://ghcr.io/coreweave/tailscale-derp/chart -f values.yaml
+helm install tailscale-derp oci://ghcr.io/coreweave/tailscale-derp/chart/tailscale-derp -f values.yaml
 ```
