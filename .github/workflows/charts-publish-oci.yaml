@@ -10,7 +10,7 @@ jobs:
     name: Publish chart
     permissions:
       contents: write
-      pull-requests: write
+      packages: write
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
