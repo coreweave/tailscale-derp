@@ -46,3 +46,4 @@ jobs:
             VERSION=${{ env.UPSTREAM_TS_VERSION }}
           tags: |
             ghcr.io/${{ github.repository }}:${{ env.UPSTREAM_TS_VERSION }}
+            ghcr.io/${{ github.repository }}:latest
