@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@d70bba72b1f3fd22344832f00baa16ece964efeb
+        uses: docker/setup-buildx-action@abe89fb761023d1d963c81f6b5e0df54236dc097
 
       - name: Log into registry ghcr.io
         uses: docker/login-action@e92390c5fb421da1463c202d546fed0ec5c39f20
