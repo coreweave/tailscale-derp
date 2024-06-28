@@ -1,0 +1,35 @@
+name: "Charts: Publish to GHCR OCI"
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch: {}
+
+jobs:
+  publish-charts:
+    name: Publish chart
+    permissions:
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+
+      - name: Package & Push Helm Charts
+        shell: bash
+        run: |
+          helm package chart/tailscale-derp --dependency-update
+          pkg=$(ls tailscale-derp-*.tgz)
+          helm push "${pkg}" oci://ghcr.io/${{ github.repository }}/chart
