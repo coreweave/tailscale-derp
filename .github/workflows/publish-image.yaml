@@ -8,6 +8,7 @@ on:
       - "Docker/**/*"
 
 env:
+  # renovate: depName=tailscale.com datasource=go
   UPSTREAM_TS_VERSION: v1.68.0
 
 jobs:
@@ -40,7 +41,6 @@ jobs:
           context: ./
           file: ./Docker/Dockerfile
           build-args: |
-            # renovate: depName=tailscale.com datasource=go
             VERSION=${{ env.UPSTREAM_TS_VERSION }}
           tags: |
             ghcr.io/${{ github.repository }}:${{ env.UPSTREAM_TS_VERSION }}
