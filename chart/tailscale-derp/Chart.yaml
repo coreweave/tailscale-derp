@@ -3,5 +3,5 @@ name: tailscale-derp
 description: Run a custom tailscale derp server on Kubernetes.
 type: application
 version: 0.2.0
-# renovate: depName=registry.gitlab.com/coreweave/tailscale-derp datasource=docker
+# renovate: depName=ghcr.io/coreweave/tailscale-derp datasource=docker
 appVersion: "v1.68.0"
