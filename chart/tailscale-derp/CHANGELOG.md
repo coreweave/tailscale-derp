@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.3.0...tailscale-derp-v0.3.1) (2024-06-29)
+
+
+### Bug Fixes
+
+* **container:** renovate regex is flipped ([#20](https://github.com/coreweave/tailscale-derp/issues/20)) ([93dfd92](https://github.com/coreweave/tailscale-derp/commit/93dfd92a7b4e0c2fcce24ce113c5f2856e9f16c6))
+
 ## [0.3.0](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.2.0...tailscale-derp-v0.3.0) (2024-06-28)
 
 
