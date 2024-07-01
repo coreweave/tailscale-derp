@@ -6,6 +6,7 @@ on:
   release:
     types: ["published", "created"]
   workflow_dispatch: {}
+  workflow_call: {}
 
 jobs:
   publish-charts:
