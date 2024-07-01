@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.3.2...tailscale-derp-v0.4.0) (2024-07-01)
+
+
+### Features
+
+* **helm:** add sources to Chart.yaml ([#24](https://github.com/coreweave/tailscale-derp/issues/24)) ([079c130](https://github.com/coreweave/tailscale-derp/commit/079c1300b9f6439fa8885245d6017861ab640cf1))
+
 ## [0.3.2](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.3.1...tailscale-derp-v0.3.2) (2024-06-29)
 
 
