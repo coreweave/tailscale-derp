@@ -14,6 +14,8 @@ jobs:
       contents: write
       pull-requests: write
     runs-on: ubuntu-22.04
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
     steps:
       - name: release
         uses: googleapis/release-please-action@v4
@@ -21,3 +23,13 @@ jobs:
         with:
           config-file: .github/release-please-config.json
           manifest-file: .github/.release-please-manifest.json
+
+  publish-helm:
+    name: Publish Helm OCI
+    needs: release
+    if: ${{ needs.release.outputs.release_created }}
+    uses: coreweave/tailscale-derp/.github/workflows/charts-publish-oci.yaml@main
+    secrets: inherit
+    permissions:
+      contents: write
+      packages: write
