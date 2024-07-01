@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: ["main"]
     types: ["opened", "synchronize", "reopened"]
+    paths:
+      - .github/workflows/publish-image.yaml
+      - "Docker/**/*"
   push:
     branches:
       - main
