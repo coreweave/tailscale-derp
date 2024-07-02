@@ -1,4 +1,4 @@
-FROM golang:1.22.4@sha256:3589439790974ec05491b66b656bf1048d0f50dd010a903463e3156ba1fc26de AS builder
+FROM golang:1.22.4@sha256:c8736b8dbf2b12c98bb0eeed91eef58ecef52b8c2bd49b8044531e8d8d8d58e8 AS builder
 WORKDIR /app
 ARG VERSION=${VERSION:-v1.68.0}
 # https://tailscale.com/kb/1118/custom-derp-servers/
