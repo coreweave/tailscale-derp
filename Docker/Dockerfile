@@ -1,11 +1,11 @@
-FROM golang:1.22.4@sha256:3589439790974ec05491b66b656bf1048d0f50dd010a903463e3156ba1fc26de AS builder
+FROM golang:1.22.4 AS builder
 WORKDIR /app
 ARG VERSION=${VERSION:-v1.68.0}
 # https://tailscale.com/kb/1118/custom-derp-servers/
 RUN go install tailscale.com/cmd/derper@${VERSION}
 RUN go install tailscale.com/cmd/derpprobe@${VERSION}
 
-FROM ubuntu:noble@sha256:2e863c44b718727c860746568e1d54afd13b2fa71b160f5cd9058fc436217b30
+FROM ubuntu:noble
 WORKDIR /app
 
 ARG DEBIAN_FRONTEND=noninteractive
