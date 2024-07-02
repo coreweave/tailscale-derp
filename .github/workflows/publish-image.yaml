@@ -47,6 +47,7 @@ jobs:
             type=schedule
             type=raw,value=latest,enable={{is_default_branch}}
             type=raw,value=${{ env.UPSTREAM_TS_VERSION }}
+            type=raw,value=${{ env.UPSTREAM_TS_VERSION }},suffix=+{{date 'YYYYMMDD-HHmmss'}}.{{sha}}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3.0.0
@@ -66,6 +67,8 @@ jobs:
         uses: docker/build-push-action@v6.2.0
         with:
           push: ${{ github.event_name != 'pull_request' }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           context: ./
           file: ./Docker/Dockerfile
           labels: ${{ steps.meta.outputs.labels }}

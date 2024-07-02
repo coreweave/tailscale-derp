@@ -2,4 +2,14 @@
   extends: [
     "github>coreweave/renovate-config"
   ],
+  packageRules: [
+    {
+      description: "Loose versioning for semver with semi-incrementing build metadata",
+      matchDatasources: ["docker"],
+      matchPackageNames: [
+        "ghcr.io/coreweave/tailscale-derp",
+      ],
+      versioning: "loose",
+    },
+  ]
 }
