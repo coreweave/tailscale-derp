@@ -3,9 +3,10 @@
     "900": {
       "RegionID": 900,
       "RegionCode": "rno2",
+      "RegionName": "RNO2",
       "Nodes": [
         {
-          "Name": "1",
+          "Name": "900a",
           "RegionID": 900,
           "HostName": "derp.rno2.coreweave.com"
         }
@@ -14,9 +15,10 @@
     "901": {
       "RegionID": 901,
       "RegionCode": "rdu1",
+      "RegionName": "RDU1",
       "Nodes": [
         {
-          "Name": "1",
+          "Name": "901a",
           "RegionID": 901,
           "HostName": "derp.rdu1.coreweave.com"
         }
@@ -25,10 +27,11 @@
     "902": {
       "RegionID": 902,
       "RegionCode": "us-east-02",
+      "RegionName": "US-EAST-02",
       "Nodes": [
         {
-          "Name": "1",
-          "RegionID": 901,
+          "Name": "902a",
+          "RegionID": 902,
           "HostName": "derp.us-east-02.coreweave.com"
         }
       ]
@@ -36,9 +39,10 @@
     "903": {
       "RegionID": 903,
       "RegionCode": "us-east-03",
+      "RegionName": "US-EAST-03",
       "Nodes": [
         {
-          "Name": "1",
+          "Name": "903a",
           "RegionID": 903,
           "HostName": "derp.us-east-03.coreweave.com"
         }
