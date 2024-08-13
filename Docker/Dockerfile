@@ -1,4 +1,4 @@
-FROM golang:1.22 AS builder
+FROM golang:1.23 AS builder
 WORKDIR /app
 ARG VERSION=${VERSION:-v1.68.0}
 # https://tailscale.com/kb/1118/custom-derp-servers/
