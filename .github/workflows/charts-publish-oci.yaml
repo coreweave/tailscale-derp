@@ -8,13 +8,18 @@ on:
   workflow_dispatch: {}
   workflow_call: {}
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
 jobs:
   publish-charts:
     name: Publish chart
     permissions:
       contents: write
       packages: write
-    runs-on: ubuntu-22.04
+      pull-requests: write
+      actions: write
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
