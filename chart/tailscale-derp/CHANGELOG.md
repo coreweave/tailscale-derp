@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.0](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.6.0...tailscale-derp-v0.7.0) (2024-10-31)
+
+
+### Features
+
+* **container:** update to ghcr.io/coreweave/tailscale-derp:v1.74.0-22e8395 ([42b3a57](https://github.com/coreweave/tailscale-derp/commit/42b3a57ec6d3c93a4132ba2898a4f09b11bd993b))
+
+
+### Bug Fixes
+
+* **ci:** improve automation process ([#62](https://github.com/coreweave/tailscale-derp/issues/62)) ([22e8395](https://github.com/coreweave/tailscale-derp/commit/22e8395f5557b667901a1e0c0773c97a5e01b185))
+
 ## [0.6.0](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.5.0...tailscale-derp-v0.6.0) (2024-09-13)
 
 
