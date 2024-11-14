@@ -9,7 +9,20 @@ if [[ "$response" -lt "200" ]] || [[ "$response" -ge "400" ]]; then
     exit 1
 fi
 
-/app/derpprobe --derp-map file:///app/derpmap.json  --once
+
+if [[ $DERP_VERIFY_CLIENTS == "true" && $CONTAINERBOOT == "false" ]];
+  then
+    DERP_MAP="local"
+    if ! /usr/local/bin/tailscale status --peers=false --json | grep -q 'Online.*true'
+      then
+        echo "Tailscale is not online and DERP_VERIFY_CLIENTS is true"
+        exit 1
+      fi; 
+  else
+    DERP_MAP="file:///app/derpmap.json"
+fi
+
+/usr/local/bin/derpprobe --derp-map $DERP_MAP --once
 
 if [ $? -ne 0 ]; then
   echo "Error: derpprobe failed"
