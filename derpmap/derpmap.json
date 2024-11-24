@@ -59,6 +59,18 @@
           "HostName": "derp.us-east-04.coreweave.com"
         }
       ]
+    },
+    "905": {
+      "RegionID": 905,
+      "RegionCode": "us-east-08a",
+      "RegionName": "US-EAST-08a",
+      "Nodes": [
+        {
+          "Name": "905a",
+          "RegionID": 905,
+          "HostName": "derp.us-east-08a.coreweave.com"
+        }
+      ]
     }
   }
 }
