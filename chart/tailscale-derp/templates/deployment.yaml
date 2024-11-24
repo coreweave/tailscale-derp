@@ -52,6 +52,26 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             {{- tpl (toYaml .Values.volumeMounts) .  | nindent 12 }}
+        {{- range .Values.env }}
+        {{- if and (eq .name "DERP_VERIFY_CLIENTS") (eq .value "true") }}
+        - name: {{ $.Chart.Name }}-tailscaled
+          securityContext:
+            {{- toYaml ($.Values).tailscaled.securityContext | nindent 12 }}
+          env:
+            {{- tpl (toYaml ($.Values).tailscaled.env) . | nindent 12 }}
+          image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
+          command: ["/usr/local/bin/containerboot"]
+          imagePullPolicy: {{ $.Values.image.pullPolicy }}
+          livenessProbe:
+            {{- toYaml $.Values.tailscaled.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml $.Values.tailscaled.readinessProbe | nindent 12 }}
+          resources:
+            {{- toYaml $.Values.tailscaled.resources | nindent 12 }}
+          volumeMounts:
+            {{- tpl (toYaml $.Values.tailscaled.volumeMounts) .  | nindent 12 }}
+        {{- end }}
+        {{- end }}
       volumes:
         {{- tpl (toYaml .Values.volumes) .  | nindent 8 }}
       {{- with .Values.nodeSelector }}

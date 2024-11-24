@@ -41,6 +41,7 @@ env:
         resource: limits.memory
   - name: DERP_HOSTNAME
     value: '{{ include "tailscale-derp.hostname" . }}'
+  # // Pass extra arguments to derper
   # - name: DERP_CERTMODE
   #   value: "manual"
   # - name: DERP_CERTDIR
@@ -53,9 +54,32 @@ env:
   #   value: "80"
   # - name: DERP_STUN
   #   value: "true"
-  # - name: DERP_DERP
-  #   value: "true"
+  # If using verify-clients, configure the tailscaled container below
+  # - name: DERP_VERIFY_CLIENTS
+  #   value: "false"
 
+# // Configure tailscaled container when using verify-clients
+tailscaled: {}
+  # volumeMounts:
+  #   - name: pipes
+  #     mountPath: /tmp
+  # env:
+  # - name: TS_HEALTHCHECK_ADDR_PORT
+  #   value: 0.0.0.0:9002 # Enable liveness
+  # - name: TS_USERSPACE
+  #   value: "true" # unprivileged
+  # - name: TS_KUBE_SECRET
+  #   value: "" # ephemeral
+  # - name: TS_AUTH_KEY
+  #   value: "" # register with auth key
+  # livenessProbe:
+  #   httpGet:
+  #     path: /healthz
+  #     port: 9002
+  # readinessProbe:
+  #   httpGet:
+  #     path: /healthz
+  #     port: 9002
 
 podSecurityContext: {}
   # fsGroup: 2000
@@ -105,6 +129,7 @@ livenessProbe:
       - /app/healthprobe.sh
   timeoutSeconds: 60
   initialDelaySeconds: 300 # Needs to grab cert
+
 readinessProbe:
   exec:
     command:
@@ -119,13 +144,17 @@ tls: {}
   # domain: '{{ include "tailscale-derp.hostname" . }}'
 
 # Additional volumes on the output Deployment definition.
-volumes: []
+volumes:
+  - name: pipes
+    emptyDir: {}
 # - name: cert
 #   secret:
 #     secretName: '{{ .Release.Name }}-tls'
 
 # Additional volumeMounts on the output Deployment definition.
-volumeMounts: []
+volumeMounts:
+  - name: pipes
+    mountPath: /var/run/tailscale
 # - name: cert
 #   mountPath: '/app/certs/{{ include "tailscale-derp.hostname" . }}.crt'
 #   subPath: tls.crt
