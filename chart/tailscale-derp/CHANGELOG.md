@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.8.0...tailscale-derp-v0.9.0) (2024-11-24)
+
+
+### Features
+
+* **container:** add support for verify-clients ([#71](https://github.com/coreweave/tailscale-derp/issues/71)) ([c4feaa1](https://github.com/coreweave/tailscale-derp/commit/c4feaa1c86ba4f7d5af4b5af931ef9c5160b475f))
+
 ## [0.8.0](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.7.0...tailscale-derp-v0.8.0) (2024-10-31)
 
 
