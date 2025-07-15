@@ -18,7 +18,7 @@ on:
 
 env:
   # renovate: datasource=go depName=tailscale.com
-  UPSTREAM_TS_VERSION: v1.84.2
+  UPSTREAM_TS_VERSION: v1.84.3
 
 jobs:
   publish-images:
