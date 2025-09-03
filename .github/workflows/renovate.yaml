@@ -57,7 +57,7 @@
             token: "${{ steps.app-token.outputs.token }}"
 
         - name: Renovate
-          uses: renovatebot/github-action@bdfd950c25796ebf1aa0c127ad55b69a14b04f69 # v43.0.3
+          uses: renovatebot/github-action@7876d7a812254599d262d62b6b2c2706018258a2 # v43.0.10
           with:
             configurationFile: .github/renovate.json5
             token: "${{ steps.app-token.outputs.token }}"
