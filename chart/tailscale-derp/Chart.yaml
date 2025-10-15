@@ -3,6 +3,6 @@ name: tailscale-derp
 description: Run a custom tailscale derp server on Kubernetes.
 type: application
 version: 0.15.0
-appVersion: "v1.86.5-3eb67c8"
+appVersion: "v1.88.4-97de72a"
 sources:
   - "https://github.com/coreweave/tailscale-derp"
