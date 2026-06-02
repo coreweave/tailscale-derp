@@ -28,6 +28,7 @@ jobs:
       packages: write
       pull-requests: write
       actions: write
+      security-events: write
     runs-on: ubuntu-24.04
 
     steps:
@@ -76,6 +77,27 @@ jobs:
           build-args: |
             VERSION=${{ env.UPSTREAM_TS_VERSION }}
           tags: ${{ steps.meta.outputs.tags }}
+          # Attach an SBOM and SLSA provenance attestation to the pushed image.
+          # Only enabled on push events, since attestations require the image
+          # to be exported to the registry (pull_request builds set push=false).
+          sbom: ${{ github.event_name != 'pull_request' }}
+          provenance: ${{ github.event_name != 'pull_request' }}
+
+      - name: Scan published image for vulnerabilities
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          image-ref: ghcr.io/${{ github.repository }}@${{ steps.build-and-push.outputs.digest }}
+          format: sarif
+          output: trivy-results.sarif
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+
+      - name: Upload Trivy scan results
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: github/codeql-action/upload-sarif@03e4368ac7daa2bd82b3e85262f3bf87ee112f57 # v3.36.0
+        with:
+          sarif_file: trivy-results.sarif
 
       - name: Update Helm Chart Image
         id: update-helm-chart
