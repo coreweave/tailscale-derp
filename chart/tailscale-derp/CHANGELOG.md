@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.1](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.18.0...tailscale-derp-v0.18.1) (2026-06-02)
+
+
+### Bug Fixes
+
+* **chart:** bump target app version ([#170](https://github.com/coreweave/tailscale-derp/issues/170)) ([6f0f417](https://github.com/coreweave/tailscale-derp/commit/6f0f417f12a1f959d4c2859f62ef867488f9b45c))
+
 ## [0.18.0](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.17.1...tailscale-derp-v0.18.0) (2026-06-02)
 
 
