@@ -41,12 +41,27 @@ while IFS='=' read -r -d '' VAR_NAME VAR_VALUE; do
   esac
 done < <(env -0)
 
-# Start tailscaled and call tailscale up if we need to verify clients
+# Start tailscaled and bring the node up if we need to verify clients.
 if [[ ${DERP_VERIFY_CLIENTS:-} == "true" && ${CONTAINERBOOT:-} == "false" ]]; then
-  # Start and background tailscaled
+  # Start and background tailscaled.
   setsid "${TSD_CMD[@]}" > /dev/stdout 2> /dev/stderr &
-  # Start and background tailscale up
-  setsid "${TS_CMD[@]}" > /dev/stdout 2> /dev/stderr &
+
+  # Wait for tailscaled's control socket before running `tailscale up` (and
+  # before derper tries to verify clients against it) to avoid a startup race
+  # where either races tailscaled coming online.
+  TAILSCALED_SOCKET="${TAILSCALED_SOCKET:-/var/run/tailscale/tailscaled.sock}"
+  for _ in $(seq 1 30); do
+    [[ -S "$TAILSCALED_SOCKET" ]] && break
+    sleep 1
+  done
+  if [[ ! -S "$TAILSCALED_SOCKET" ]]; then
+    echo "tailscaled socket $TAILSCALED_SOCKET not ready after 30s" >&2
+    exit 1
+  fi
+
+  # Bring the node up in the foreground so derper only starts once the tailnet
+  # login has completed.
+  "${TS_CMD[@]}" > /dev/stdout 2> /dev/stderr
 fi
 
 # Execute the derper
