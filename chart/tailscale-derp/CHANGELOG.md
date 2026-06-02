@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.1](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.17.0...tailscale-derp-v0.17.1) (2026-06-02)
+
+
+### Bug Fixes
+
+* **chat:** pod selector template ([#165](https://github.com/coreweave/tailscale-derp/issues/165)) ([cbd8b5d](https://github.com/coreweave/tailscale-derp/commit/cbd8b5d70ea1690aeba143537bc17b1e7592f096))
+
 ## [0.17.0](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.16.0...tailscale-derp-v0.17.0) (2026-06-02)
 
 
