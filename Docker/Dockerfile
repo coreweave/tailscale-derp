@@ -28,4 +28,7 @@ RUN apt-get update && \
     chmod +x /app/entrypoint.sh && \
     chmod +x /app/healthprobe.sh
 
+RUN chown -R 1000:1000 /app
+USER 1000:1000
+
 ENTRYPOINT ["/app/entrypoint.sh"]
