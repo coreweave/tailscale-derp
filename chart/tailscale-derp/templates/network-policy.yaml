@@ -38,7 +38,7 @@ metadata:
   labels: {{ .labels | toYaml | nindent 4 }}
 spec:
   {{- if .podSelector }}
-  podSelector: {{ .podSelector }}
+  podSelector: {{ .podSelector | toYaml | nindent 4 }}
   {{- end }}
   {{- if .egress }}
   egress: {{ .egress | toYaml | nindent 4 }}
