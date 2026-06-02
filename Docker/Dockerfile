@@ -8,7 +8,7 @@ RUN go install tailscale.com/cmd/tailscaled@${VERSION}
 RUN go install tailscale.com/cmd/tailscale@${VERSION}
 RUN go install tailscale.com/cmd/containerboot@${VERSION}
 
-FROM ubuntu:resolute
+FROM ubuntu:noble
 WORKDIR /usr/local/bin
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -22,7 +22,7 @@ COPY Docker/entrypoint.sh /app/entrypoint.sh
 COPY Docker/healthprobe.sh /app/healthprobe.sh
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends apt-utils ca-certificates curl jq && \
+    apt-get install -y --no-install-recommends ca-certificates curl jq && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir /app/certs && \
     chmod +x /app/entrypoint.sh && \
