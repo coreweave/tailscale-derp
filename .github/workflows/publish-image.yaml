@@ -118,6 +118,7 @@ jobs:
           body: "Updating helm appVersion to ${{ fromJSON(steps.meta.outputs.json).tags[2] }}"
           branch: bump-helm-image
           delete-branch: true
+          add-paths: chart/tailscale-derp/Chart.yaml
           author: |
             dependa-jr[bot] <171952447+dependa-jr[bot]@users.noreply.github.com>
           committer: |

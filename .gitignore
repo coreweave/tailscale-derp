@@ -35,3 +35,6 @@ Session.vim
 **/chart/*.tgz
 
 .history
+
+# Trivy vulnerability DB cache (downloaded into the workspace during CI scans)
+.cache/
