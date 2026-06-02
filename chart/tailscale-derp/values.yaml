@@ -123,6 +123,18 @@ resources:
     cpu: 2000m
     memory: 2Gi
 
+# startupProbe gates the slow first start for cert acquisition so the
+# liveness/readiness probes don't need a large fixed initialDelaySeconds.
+startupProbe:
+  exec:
+    command:
+      - /bin/bash
+      - -c
+      - /app/healthprobe.sh
+  periodSeconds: 10
+  failureThreshold: 60
+  timeoutSeconds: 60
+
 livenessProbe:
   exec:
     command:
@@ -130,7 +142,6 @@ livenessProbe:
       - -c
       - /app/healthprobe.sh
   timeoutSeconds: 60
-  initialDelaySeconds: 300 # Needs to grab cert
 
 readinessProbe:
   exec:
@@ -139,7 +150,6 @@ readinessProbe:
       - -c
       - /app/healthprobe.sh
   timeoutSeconds: 60
-  initialDelaySeconds: 300 # Needs to grab cert
 
 tls: {}
   # enabled: true
