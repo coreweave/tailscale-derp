@@ -8,7 +8,7 @@ RUN go install tailscale.com/cmd/tailscaled@${VERSION}
 RUN go install tailscale.com/cmd/tailscale@${VERSION}
 RUN go install tailscale.com/cmd/containerboot@${VERSION}
 
-FROM ubuntu:noble
+FROM ubuntu:resolute
 WORKDIR /usr/local/bin
 
 ARG DEBIAN_FRONTEND=noninteractive
