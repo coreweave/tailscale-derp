@@ -29,6 +29,9 @@ metadata:
   annotations: {{- tpl ((((.Values).service).directAttach).annotations | toYaml) . | nindent 4}}
   labels:
     {{- include "tailscale-derp.labels" . | nindent 4 }}
+    {{- with .Values.service.directAttach.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
   name: {{ include "tailscale-derp.fullname" . }}-direct
 spec:
   type: LoadBalancer
