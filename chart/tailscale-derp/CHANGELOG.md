@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.17.0](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.16.0...tailscale-derp-v0.17.0) (2026-06-02)
+
+
+### Features
+
+* **chart:** support custom labels on the directAttach service ([ca7b0e2](https://github.com/coreweave/tailscale-derp/commit/ca7b0e2302162c15b860d13f58506a125428cc83))
+* **chart:** use a startupProbe for slow cert acquisition ([0c0ff63](https://github.com/coreweave/tailscale-derp/commit/0c0ff63e47e8f0755084552a60770083ffbf8137))
+* **container:** update to ghcr.io/coreweave/tailscale-derp:v1.88.4-7784d46 ([b9bf6a6](https://github.com/coreweave/tailscale-derp/commit/b9bf6a6c9ab2a7b9f42ba6e1691a53e8ecc74f14))
+* **container:** update to ghcr.io/coreweave/tailscale-derp:v1.98.3-a98bcf5 ([8ac345c](https://github.com/coreweave/tailscale-derp/commit/8ac345c71ecbaa958793bae1af1c975b38a51242))
+* **image:** run container as non-root ([ca61880](https://github.com/coreweave/tailscale-derp/commit/ca61880cf7cc4afd185e0b7d3308d1e224a1765d))
+
 ## [0.16.0](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.15.0...tailscale-derp-v0.16.0) (2025-10-15)
 
 
