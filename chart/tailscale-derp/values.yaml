@@ -114,6 +114,7 @@ service:
   directAttach:
     enabled: false
     annotations: {}
+    labels: {}
 
 resources:
   requests:
