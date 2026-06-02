@@ -46,8 +46,6 @@ env:
   #   value: "manual"
   # - name: DERP_CERTDIR
   #   value: "/app/certs"
-  # - name: DERP_ADDR
-  #   value: ":443"
   # - name: DERP_HTTP_PORT
   #   value: "80"
   # - name: DERP_STUN_PORT
