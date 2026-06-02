@@ -22,7 +22,11 @@ if [[ $DERP_VERIFY_CLIENTS == "true" && $CONTAINERBOOT == "false" ]];
     DERP_MAP="file:///app/derpmap.json"
 fi
 
-/usr/local/bin/derpprobe --derp-map $DERP_MAP --once
+# This is a single-node DERP region, so there are no peers to mesh with.
+# derpprobe still adds a 900->900 mesh probe by default (--mesh-interval=15s),
+# which panics on a nil pointer when no mesh key is configured. Disable it with
+# --mesh-interval=0 and rely on the TLS probe.
+/usr/local/bin/derpprobe --derp-map $DERP_MAP --mesh-interval=0 --once
 
 if [ $? -ne 0 ]; then
   echo "Error: derpprobe failed"
