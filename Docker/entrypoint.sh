@@ -41,6 +41,13 @@ while IFS='=' read -r -d '' VAR_NAME VAR_VALUE; do
   esac
 done < <(env -0)
 
+# derper only auto-defaults its -c config path when running as root (uid 0)
+# Default it to a path the derper user can write, unless the caller set DERP_C
+if [[ ! " ${DERP_CMD[*]} " == *" --c="* ]]; then
+  DERP_CMD+=("--c=/app/derper.key")
+  echo "Adding c=/app/derper.key to DERP_CMD"
+fi
+
 # Start tailscaled and bring the node up if we need to verify clients.
 if [[ ${DERP_VERIFY_CLIENTS:-} == "true" && ${CONTAINERBOOT:-} == "false" ]]; then
   # Start and background tailscaled.
