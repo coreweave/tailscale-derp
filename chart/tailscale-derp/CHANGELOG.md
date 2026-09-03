@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.20.0](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.19.0...tailscale-derp-v0.20.0) (2026-09-03)
+
+
+### Features
+
+* **container:** update to ghcr.io/coreweave/tailscale-derp:v1.102.3-67ac159 ([1b07e27](https://github.com/coreweave/tailscale-derp/commit/1b07e27ca8482bea6f82d838e1f37a1bf8dc4846))
+
 ## [0.19.0](https://github.com/coreweave/tailscale-derp/compare/tailscale-derp-v0.18.1...tailscale-derp-v0.19.0) (2026-06-02)
 
 
