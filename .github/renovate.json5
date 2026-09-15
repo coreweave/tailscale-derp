@@ -1,5 +1,5 @@
 {
   extends: [
-    "github>coreweave/renovate-config"
+    "github>coreweave/renovate-config#v1.1.0"
   ]
 }
