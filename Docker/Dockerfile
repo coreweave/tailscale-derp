@@ -20,7 +20,7 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
       cp /go/bin/* /out/; \
     fi
 
-FROM ubuntu:noble
+FROM ubuntu:resolute
 WORKDIR /usr/local/bin
 
 ARG DEBIAN_FRONTEND=noninteractive
